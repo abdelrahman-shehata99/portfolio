@@ -1,4 +1,5 @@
 import { ArrowUp, Github, Linkedin, Mail } from "lucide-react";
+import { scrollToId } from "@/lib/smooth-scroll";
 
 export function Footer() {
   return (
@@ -35,6 +36,10 @@ export function Footer() {
           </a>
           <a
             href="#top"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToId("top");
+            }}
             aria-label="Back to top"
             className="ml-2 inline-flex items-center gap-1.5 text-xs font-mono-ui text-muted-foreground hover:text-primary transition-colors"
           >
