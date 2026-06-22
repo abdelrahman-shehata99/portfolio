@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import {
   motion,
   useReducedMotion,
@@ -88,6 +88,15 @@ export function HowIBuild() {
     target: wrapperRef,
     offset: ["start start", "end end"],
   });
+
+  // Preload all chapter screenshots so transitions don't pop.
+  useEffect(() => {
+    CHAPTERS.forEach((c) => {
+      const img = new Image();
+      img.decoding = "async";
+      img.src = c.image;
+    });
+  }, []);
 
   // Tiny "breathing" motion for the foreground device.
   const phoneY = useTransform(scrollYProgress, [0, 1], [10, -10]);
@@ -297,17 +306,23 @@ export function HowIBuild() {
                     const n = CHAPTERS.length;
                     const start = i / n;
                     const end = (i + 1) / n;
-                    const overlap = 0.05;
+                    const overlap = 0.07;
                     // eslint-disable-next-line react-hooks/rules-of-hooks
                     const op = useTransform(
                       scrollYProgress,
                       [
                         Math.max(0, start - overlap),
-                        start + 0.02,
-                        end - 0.02,
+                        start + 0.03,
+                        end - 0.03,
                         Math.min(1, end + overlap),
                       ],
                       [0, 1, 1, 0],
+                    );
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
+                    const sc = useTransform(
+                      scrollYProgress,
+                      [start, end],
+                      [1.0, 1.04],
                     );
                     return (
                       <motion.img
@@ -315,8 +330,9 @@ export function HowIBuild() {
                         src={c.image}
                         alt={`iStoria — ${c.title}`}
                         className="absolute inset-0 w-full h-full object-cover"
-                        style={{ opacity: op }}
-                        loading="lazy"
+                        style={{ opacity: op, scale: sc }}
+                        decoding="async"
+                        loading="eager"
                       />
                     );
                   })}

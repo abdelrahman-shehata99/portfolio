@@ -7,7 +7,7 @@ const LINKS = [
     icon: Mail,
     label: "Email",
     value: "abdelrahman2490@gmail.com",
-    href: "mailto:abdelrahman2490@gmail.com",
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=abdelrahman2490@gmail.com",
   },
   {
     icon: Phone,
@@ -46,7 +46,7 @@ export function Contact() {
                 <a
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noreferrer" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-5 sm:p-6 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-lg transition-all"
                 >
                   <span className="h-11 w-11 grid place-items-center rounded-xl bg-primary/10 text-primary shrink-0">
