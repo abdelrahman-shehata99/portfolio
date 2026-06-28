@@ -105,7 +105,7 @@ export function HowIBuild() {
 
   if (reduced) {
     return (
-      <section id="how-i-build" className="py-20 sm:py-28">
+      <section id="how-i-build" className="py-20 sm:py-28 scroll-mt-24">
         <div className="mx-auto max-w-[1140px] px-5 sm:px-8">
           <SectionHeader
             eyebrow="◆ — The work"
