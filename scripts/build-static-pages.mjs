@@ -10,7 +10,7 @@ import { writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const PORT = 4173;
-const BASEPATH = "/portfolio";
+const BASEPATH = ""; // served from the custom domain root
 const outDir = path.resolve(import.meta.dirname, "../.output/public");
 
 const server = spawn(process.execPath, [path.resolve(import.meta.dirname, "../.output/server/index.mjs")], {
