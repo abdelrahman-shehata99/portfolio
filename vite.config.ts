@@ -16,9 +16,9 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
-    ...(isGithubPages ? { router: { basepath: "/abdo-shehata" } } : {}),
+    ...(isGithubPages ? { router: { basepath: "/portfolio" } } : {}),
   },
-  ...(isGithubPages ? { vite: { base: "/abdo-shehata/" } } : {}),
+  ...(isGithubPages ? { vite: { base: "/portfolio/" } } : {}),
   // The "static"/"github-pages" Nitro presets hit an upstream bug in this pinned
   // nitro beta (SSR build fails on the prerender crawler step), so we build with
   // the stable node-server preset instead and snapshot the rendered HTML ourselves
